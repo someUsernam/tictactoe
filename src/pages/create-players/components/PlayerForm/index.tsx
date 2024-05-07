@@ -1,3 +1,5 @@
+import { links } from "@/common/consts/Links";
+import { setIsGameStarted } from "@/store/optionsSlice";
 import { setPlayer } from "@store/playerSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +34,9 @@ function PlayerForm() {
 			}),
 		);
 
-		navigate("/game-options");
+		dispatch(setIsGameStarted(true));
+
+		navigate(links.game);
 	}
 
 	return (
