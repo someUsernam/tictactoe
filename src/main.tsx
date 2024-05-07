@@ -6,11 +6,12 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
 
-import ErrorBoundary from "./common/components/ErrorBoundary/index.tsx";
+import ErrorBoundary from "./common/components/ErrorBoundary";
 import Layout from "./common/components/Layout/index.tsx";
-import { Game } from "./pages/game/index.tsx";
+import ProtectedRoute from "./common/components/ProtectedRoute/index.tsx";
 import { CreatePlayers } from "./pages/create-players/index.tsx";
 import { GameOptions } from "./pages/game-options/index.tsx";
+import { Game } from "./pages/game/index.tsx";
 import store from "./store/store.ts";
 
 const router = createBrowserRouter([
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/game",
-				element: <Game />,
+				element: <ProtectedRoute><Game /></ProtectedRoute>,
 			},
 		],
 	},

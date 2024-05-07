@@ -1,3 +1,4 @@
+import { links } from "@/common/consts/Links";
 import { useSize } from "@/resources/options/hooks";
 import { setIsGameStarted, setSize } from "@/store/optionsSlice";
 import { useDispatch } from "react-redux";
@@ -16,7 +17,7 @@ function GameOptions() {
 		dispatch(setSize(Number(size)));
 		dispatch(setIsGameStarted(true));
 
-		navigate("/game");
+		navigate(links.game);
 	}
 
 	return (
