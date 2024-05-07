@@ -37,7 +37,7 @@ function PlayerForm() {
 			<Input type="text" required name="Player1Name" placeholder="Player 1" />
 			<label htmlFor="Player2Name">Player 2 name</label>
 			<Input type="text" required name="Player2Name" placeholder="Player 2" />
-			<button type="submit">Start game</button>
+			<button type="submit">Next</button>
 		</form>
 	);
 }

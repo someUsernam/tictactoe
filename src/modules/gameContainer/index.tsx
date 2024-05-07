@@ -1,5 +1,5 @@
 import { usePlayers } from "@/store/playerSlice";
-import { StartGame } from "../startGame/components";
+import { SetPlayers } from "../setPlayers/components";
 
 function GameContainer() {
 	const players = usePlayers();
@@ -12,9 +12,9 @@ function GameContainer() {
 	}
 
 	if (!playersExists()) {
-		return <StartGame />;
+		return <SetPlayers />;
 	}
 
 	return <>{}</>;
 }
-export default GameContainer;
+export { GameContainer };
