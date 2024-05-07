@@ -1,11 +1,7 @@
+import { Player } from "@/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
-
-type Player = {
-	name: string;
-	score: number;
-};
 
 type PlayerState = {
 	players: Record<string, Player>;

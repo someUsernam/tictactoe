@@ -1,18 +1,17 @@
 import { usePlayers } from "@/store/playerSlice";
+import { SetGameOptions } from "../setGameOptions";
 import { SetPlayers } from "../setPlayers/components";
+import { playersExists } from "./utils/playersExists";
 
 function GameContainer() {
 	const players = usePlayers();
 
-	function playersExists() {
-		if (Object.keys(players).length >= 2) {
-			return true;
-		}
-		return false;
+	if (!playersExists(players)) {
+		return <SetPlayers />;
 	}
 
-	if (!playersExists()) {
-		return <SetPlayers />;
+	if (playersExists(players)) {
+		return <SetGameOptions />;
 	}
 
 	return <>{}</>;
