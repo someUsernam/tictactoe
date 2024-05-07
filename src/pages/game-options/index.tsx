@@ -15,9 +15,8 @@ function GameOptions() {
 		const formData = new FormData(event.currentTarget);
 		const size = formData.get("size") as string;
 		dispatch(setSize(Number(size)));
-		dispatch(setIsGameStarted(true));
 
-		navigate(links.game);
+		navigate(links.players);
 	}
 
 	return (
