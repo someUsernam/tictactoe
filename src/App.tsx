@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import styled, { createGlobalStyle } from "styled-components";
-import { StartGame } from "./modules/startGame/components";
+import GameContainer from "./modules/gameContainer";
 import store from "./store/store";
 
 export const GlobalStyle = createGlobalStyle`
@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,20 +22,11 @@ const Container = styled.div`
 `;
 
 function App() {
-	// const players = usePlayers();
-
-	// function playersExists() {
-	// 	if (Object.keys(players).length >= 2) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
-
 	return (
 		<Provider store={store}>
-			<Container>
-				<StartGame />
-			</Container>
+			<StyledContainer>
+				<GameContainer />
+			</StyledContainer>
 		</Provider>
 	);
 }
