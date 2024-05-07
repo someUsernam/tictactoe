@@ -5,11 +5,12 @@ import { RouterProvider } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
-import { ErrorBoundary } from "./modules/common/components/ErrorBoundary/index.tsx";
-import { Layout } from "./modules/common/components/Layout/index.tsx";
-import { CreatePlayers } from "./modules/create-players/components/index.tsx";
-import { GameOptions } from "./modules/game-options/index.tsx";
-import { Game } from "./modules/game/index.tsx";
+
+import ErrorBoundary from "./common/components/ErrorBoundary/index.tsx";
+import Layout from "./common/components/Layout/index.tsx";
+import { Game } from "./pages/game/index.tsx";
+import { CreatePlayers } from "./pages/create-players/index.tsx";
+import { GameOptions } from "./pages/game-options/index.tsx";
 import store from "./store/store.ts";
 
 const router = createBrowserRouter([

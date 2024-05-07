@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PlayerForm } from "./PlayerForm";
+import { PlayerForm } from "./components/PlayerForm";
 
 const StyledTitle = styled.h1`
   color: var(--primary-color);
