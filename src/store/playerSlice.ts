@@ -1,4 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 type Player = {
 	name: string;
@@ -29,5 +31,10 @@ const playerSlice = createSlice({
 	},
 });
 
+function usePlayers() {
+	return useSelector((state: RootState) => state.player.players);
+}
+
 export const { setPlayer } = playerSlice.actions;
+export { usePlayers };
 export default playerSlice.reducer;
