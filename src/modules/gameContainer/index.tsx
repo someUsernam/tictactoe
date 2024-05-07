@@ -1,8 +1,9 @@
+import { useIsGameStarted } from "@/store/optionsSlice";
 import { usePlayers } from "@/store/playerSlice";
+import { Game } from "../game";
 import { SetGameOptions } from "../setGameOptions";
 import { SetPlayers } from "../setPlayers/components";
 import { playersExists } from "./utils/playersExists";
-import { useIsGameStarted } from "@/store/optionsSlice";
 
 function GameContainer() {
 	const players = usePlayers();
@@ -12,10 +13,10 @@ function GameContainer() {
 		return <SetPlayers />;
 	}
 
-	if (playersExists(players) && isGameStarted === false) {
+	if (playersExists(players) && !isGameStarted) {
 		return <SetGameOptions />;
 	}
 
-	return <>{}</>;
+	return <Game />;
 }
 export { GameContainer };
