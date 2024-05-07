@@ -1,4 +1,4 @@
-import { setPlayer1Name, setPlayer2Name } from "@store/playerSlice";
+import { setPlayer } from "@store/playerSlice";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
@@ -17,10 +17,18 @@ function PlayerForm() {
 		const player1Name = formData.get("Player1Name") as string;
 		const player2Name = formData.get("Player2Name") as string;
 
-		console.log(player1Name, player2Name);
-
-		dispatch(setPlayer1Name(player1Name));
-		dispatch(setPlayer2Name(player2Name));
+		dispatch(
+			setPlayer({
+				playerId: "player1",
+				player: { name: player1Name, score: 0 },
+			}),
+		);
+		dispatch(
+			setPlayer({
+				playerId: "player2",
+				player: { name: player2Name, score: 0 },
+			}),
+		);
 	}
 
 	return (
