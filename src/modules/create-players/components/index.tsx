@@ -9,7 +9,7 @@ const StyledSubtitle = styled.h2`
   color: var(--secondary-color);
 `;
 
-function SetPlayers() {
+function CreatePlayers() {
 	return (
 		<>
 			<StyledTitle>Tic Tac Toe</StyledTitle>
@@ -18,4 +18,4 @@ function SetPlayers() {
 		</>
 	);
 }
-export { SetPlayers };
+export { CreatePlayers };

@@ -1,7 +1,5 @@
-import { Player } from "@/types";
+import { Player } from "@/resources/players";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { RootState } from "./store";
 
 type PlayerState = {
 	players: Record<string, Player>;
@@ -27,10 +25,5 @@ const playerSlice = createSlice({
 	},
 });
 
-function usePlayers() {
-	return useSelector((state: RootState) => state.player.players);
-}
-
 export const { setPlayer } = playerSlice.actions;
-export { usePlayers };
-export default playerSlice.reducer;
+export { playerSlice };

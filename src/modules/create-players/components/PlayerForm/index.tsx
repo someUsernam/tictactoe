@@ -1,5 +1,6 @@
 import { setPlayer } from "@store/playerSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -10,6 +11,7 @@ const Input = styled.input`
 
 function PlayerForm() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	function handleStartGame(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -29,6 +31,8 @@ function PlayerForm() {
 				player: { name: player2Name, score: 0 },
 			}),
 		);
+
+		navigate("/game-options");
 	}
 
 	return (
