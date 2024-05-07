@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { GameContainer } from "./modules/gameContainer";
+import { GameContainer } from "./pages/gameContainer";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
