@@ -1,4 +1,10 @@
+import { Board } from "./components/Board";
+
 function Game() {
-	return <div>Game</div>;
+	return (
+		<div>
+			<Board />
+		</div>
+	);
 }
 export { Game };
