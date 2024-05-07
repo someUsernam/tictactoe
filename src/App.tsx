@@ -22,12 +22,14 @@ const Container = styled.div`
 `;
 
 function App() {
-	function playersExists() {
-		return (
-			store.getState().player.player1Name !== "" &&
-			store.getState().player.player2Name !== ""
-		);
-	}
+	// const players = usePlayers();
+
+	// function playersExists() {
+	// 	if (Object.keys(players).length >= 2) {
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
 
 	return (
 		<Provider store={store}>
