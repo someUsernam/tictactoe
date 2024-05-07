@@ -1,4 +1,4 @@
-import { Player } from "@/resources/players";
+import { Player, PlayerSymbol } from "@/resources/players";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type PlayerState = {
@@ -22,8 +22,12 @@ const playerSlice = createSlice({
 			const { playerId, player } = action.payload;
 			state.players[playerId] = player;
 		},
+		setScore(state, action: PayloadAction<{ playerId: string; score: number }>) {
+			const { playerId, score } = action.payload;
+			state.players[playerId].score = score;
+		},
 	},
 });
 
-export const { setPlayer } = playerSlice.actions;
+export const { setPlayer, setScore } = playerSlice.actions;
 export { playerSlice };

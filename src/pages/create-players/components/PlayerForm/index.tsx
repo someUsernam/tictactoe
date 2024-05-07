@@ -1,4 +1,5 @@
 import { links } from "@/common/consts/Links";
+import { PlayerSymbol } from "@/resources/players";
 import { setIsGameStarted } from "@/store/optionsSlice";
 import { setPlayer } from "@store/playerSlice";
 import { useDispatch } from "react-redux";
@@ -24,13 +25,13 @@ function PlayerForm() {
 		dispatch(
 			setPlayer({
 				playerId: "player1",
-				player: { name: player1Name, score: 0 },
+				player: { name: player1Name, score: 0, symbol: PlayerSymbol.Cross },
 			}),
 		);
 		dispatch(
 			setPlayer({
 				playerId: "player2",
-				player: { name: player2Name, score: 0 },
+				player: { name: player2Name, score: 0, symbol: PlayerSymbol.Circle},
 			}),
 		);
 
