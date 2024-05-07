@@ -1,9 +1,12 @@
-import { setIsGameStarted, setSize, useSize } from "@/store/optionsSlice";
+import { useSize } from "@/resources/options/hooks";
+import { setIsGameStarted, setSize } from "@/store/optionsSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-function SetGameOptions() {
+function GameOptions() {
 	const size = useSize();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	function handleStartGame(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -12,6 +15,8 @@ function SetGameOptions() {
 		const size = formData.get("size") as string;
 		dispatch(setSize(Number(size)));
 		dispatch(setIsGameStarted(true));
+
+		navigate("/game");
 	}
 
 	return (
@@ -33,4 +38,4 @@ function SetGameOptions() {
 		</div>
 	);
 }
-export { SetGameOptions };
+export { GameOptions };

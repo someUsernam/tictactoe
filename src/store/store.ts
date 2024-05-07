@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import optionsSlice from "./optionsSlice";
-import playerSlice from "./playerSlice";
+import { optionsSlice } from "./optionsSlice/slice";
+import { playerSlice } from "./playerSlice/slice";
 
 const store = configureStore({
 	reducer: {
-		player: playerSlice,
-		options: optionsSlice,
+		player: playerSlice.reducer,
+		options: optionsSlice.reducer,
 	},
 });
 

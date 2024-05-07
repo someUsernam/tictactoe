@@ -1,22 +1,21 @@
-import { useIsGameStarted } from "@/store/optionsSlice";
-import { usePlayers } from "@/store/playerSlice";
-import { Game } from "../game";
-import { SetGameOptions } from "../setGameOptions";
-import { SetPlayers } from "../setPlayers/components";
+import { useIsGameStarted } from "@/resources/options";
+import { usePlayers } from "@/resources/players";
+import { useNavigate } from "react-router-dom";
 import { playersExists } from "./utils/playersExists";
 
 function GameContainer() {
+	const navigate = useNavigate();
 	const players = usePlayers();
 	const isGameStarted = useIsGameStarted();
 
 	if (!playersExists(players)) {
-		return <SetPlayers />;
+		return navigate("create-players");
 	}
 
 	if (playersExists(players) && !isGameStarted) {
-		return <SetGameOptions />;
+		return navigate("game-options");
 	}
 
-	return <Game />;
+	return navigate("game");
 }
 export { GameContainer };

@@ -9,7 +9,12 @@ const StyledSquare = styled.div`
   align-items: center;
 `;
 
-function Square() {
-	return <StyledSquare>X</StyledSquare>;
+type SquareProps = {
+	children: React.ReactNode;
+	onPlayerMove: () => void;
+};
+
+function Square({ children, onPlayerMove }: SquareProps) {
+	return <StyledSquare onClick={onPlayerMove}>{children}</StyledSquare>;
 }
 export { Square };
