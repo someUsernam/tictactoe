@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import styled, { createGlobalStyle } from "styled-components";
-import GameContainer from "./modules/gameContainer";
+import { GameContainer } from "./modules/gameContainer";
 import store from "./store/store";
 
 export const GlobalStyle = createGlobalStyle`
