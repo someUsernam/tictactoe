@@ -92,4 +92,4 @@ function Game() {
 		</div>
 	);
 }
-export { Game };
+export default Game;

@@ -7,11 +7,11 @@ import App from "./App.tsx";
 import "./index.css";
 
 import ErrorBoundary from "./common/components/ErrorBoundary";
-import Layout from "./common/components/Layout/index.tsx";
-import ProtectedRoute from "./common/components/ProtectedRoute/index.tsx";
-import { CreatePlayers } from "./pages/create-players/index.tsx";
-import { GameOptions } from "./pages/game-options/index.tsx";
-import { Game } from "./pages/game/index.tsx";
+import Layout from "./common/components/Layout";
+import CreatePlayers from "./pages/create-players";
+import GameOptions from "./pages/game-options";
+import ProtectedGameRoute from "./pages/game/components/ProtectedGameRoute";
+import Game from "./pages/game";
 import store from "./store/store.ts";
 
 const router = createBrowserRouter([
@@ -33,7 +33,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/game",
-				element: <ProtectedRoute><Game /></ProtectedRoute>,
+				element: (
+					<ProtectedGameRoute>
+						<Game />
+					</ProtectedGameRoute>
+				),
 			},
 		],
 	},

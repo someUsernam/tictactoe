@@ -1,6 +1,6 @@
 import { links } from "@/common/consts/Links";
 import { useSize } from "@/resources/options/hooks";
-import { setIsGameStarted, setSize } from "@/store/optionsSlice";
+import { setSize } from "@/store/optionsSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -38,4 +38,4 @@ function GameOptions() {
 		</div>
 	);
 }
-export { GameOptions };
+export default GameOptions;

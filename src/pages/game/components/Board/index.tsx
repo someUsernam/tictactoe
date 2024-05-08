@@ -40,7 +40,6 @@ function Board({ squares, onPlay, currentPlayer, winningLine }: BoardProps) {
 					{Array.from({ length: size }, (_, j) => {
 						const index = i * size + j;
 						const isWinning = winningLine.includes(index);
-
 						return (
 							<Square
 								onPlayerMove={() => handleMove(i * size + j)}
