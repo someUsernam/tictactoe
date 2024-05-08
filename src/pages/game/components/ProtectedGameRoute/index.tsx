@@ -5,13 +5,11 @@ import { usePlayers } from "@/resources/players";
 import { ChildrenProps } from "@/types";
 import { Navigate } from "react-router-dom";
 
+function ProtectedGameRoute({ children }: ChildrenProps) {
+	const isGameStarted = useIsGameStarted();
+	const players = usePlayers();
 
-function ProtectedRoute({children}: ChildrenProps) {
-  const isGameStarted = useIsGameStarted();
-  const players = usePlayers();
-
-
-  if (!playersExists(players)) {
+	if (!playersExists(players)) {
 		return <Navigate to={links.options} />;
 	}
 
@@ -19,7 +17,6 @@ function ProtectedRoute({children}: ChildrenProps) {
 		return <Navigate to={links.players} />;
 	}
 
-
-  return children;
+	return children;
 }
-export default ProtectedRoute
+export default ProtectedGameRoute;

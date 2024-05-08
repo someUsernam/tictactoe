@@ -18,4 +18,4 @@ function CreatePlayers() {
 		</>
 	);
 }
-export { CreatePlayers };
+export default CreatePlayers;
