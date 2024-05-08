@@ -13,20 +13,20 @@ const StyledSquare = styled.div<{ $highlight: boolean }>`
 
 type SquareProps = {
 	children: React.ReactNode;
-	onPlayerMove: () => void;
+	onClick: () => void;
 	highlight: boolean;
 };
 
-function Square({ children, onPlayerMove, highlight }: SquareProps) {
+function Square({ children, onClick, highlight }: SquareProps) {
 	function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
 		if (event.key === "Enter") {
-			onPlayerMove();
+			onClick();
 		}
 	}
 
 	return (
 		<StyledSquare
-			onClick={onPlayerMove}
+			onClick={onClick}
 			$highlight={highlight}
 			tabIndex={0}
 			onKeyDown={handleKeyDown}
@@ -35,4 +35,5 @@ function Square({ children, onPlayerMove, highlight }: SquareProps) {
 		</StyledSquare>
 	);
 }
-export { Square };
+
+export default Square;

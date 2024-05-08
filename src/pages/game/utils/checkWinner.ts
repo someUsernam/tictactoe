@@ -1,6 +1,17 @@
 import { PlayerSymbol } from "@/resources/players";
+import { SquareSymbol } from "../types";
 
-export function checkWinner(squares: (PlayerSymbol | null)[], size: number) {
+export interface Winner {
+	symbol: PlayerSymbol;
+	winningLine: number[];
+}
+
+export type CheckWinnerResult = Winner | null;
+
+export function checkWinner(
+	squares: SquareSymbol[],
+	size: number,
+): CheckWinnerResult {
 	const lines = [];
 	for (let i = 0; i < size; i++) {
 		const row = [];
