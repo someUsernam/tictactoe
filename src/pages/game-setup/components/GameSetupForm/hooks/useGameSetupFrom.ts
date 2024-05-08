@@ -17,11 +17,13 @@ export function useGameSetupForm() {
 
 		Array.from({ length: 2 }, (_, i) => {
 			const playerName = formData.get(`Player${i + 1}Name`) as string;
+			const playerId = `player${i + 1}`;
 
 			dispatch(
 				setPlayer({
-					playerId: `player${i + 1}`,
+					playerId,
 					player: {
+						id: playerId,
 						name: playerName,
 						score: 0,
 						symbol: i === 0 ? PlayerSymbol.Cross : PlayerSymbol.Circle,
