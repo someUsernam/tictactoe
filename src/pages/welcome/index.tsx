@@ -1,6 +1,6 @@
 import { Button } from "@/common/components/Button";
 import styled from "styled-components";
-import SymbolsContainer from "./components/SymbolsContainer/SymbolsContainer";
+import SymbolsContainer from "./components/SymbolsContainer";
 
 const StyledWelcome = styled.div`
   display: flex;
