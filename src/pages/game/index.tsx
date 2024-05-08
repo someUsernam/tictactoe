@@ -1,12 +1,10 @@
 import { useSize } from "@/resources/options";
 import { usePlayers } from "@/resources/players";
+import { setScore } from "@/store/playerSlice";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Board } from "./components/Board";
-
-// {
-// 	player1: { name: 'sdf', score: 0, symbol: 'Cross' },
-//  player2: { name: 'sdd', score: 0, symbol: 'Circle' }
-// }
+import { checkWinner } from "./utils/checkWinner";
 
 function Game() {
 	const size = useSize();
@@ -17,6 +15,7 @@ function Game() {
 	const currentSquares: (string | null)[] = history[currentMove];
 	const playerIds = Object.keys(players);
 	const currentPlayer = players[playerIds[currentMove % playerIds.length]];
+	const dispatch = useDispatch();
 
 	function handleCurrentMove(move: number) {
 		setCurrentMove(move);
@@ -27,11 +26,44 @@ function Game() {
 		setXIsNext(!xIsNext);
 		setHistory(nextHistory);
 		setCurrentMove(nextHistory.length - 1);
+
+		const winner = checkWinner(newSquares, size);
+		if (winner) {
+			let winnerPlayerId = "";
+			for (const [Id, value] of Object.entries(players)) {
+				if (String(value.symbol) === winner) {
+					winnerPlayerId = Id;
+					break;
+				}
+			}
+
+			if (!winnerPlayerId) {
+				return;
+			}
+
+			dispatch(
+				setScore({
+					playerId: winnerPlayerId,
+					score: players[winnerPlayerId].score + 1,
+				}),
+			);
+		}
 	}
 
 	return (
 		<div>
-
+			<h1>currentPlayer {currentPlayer.name}</h1>
+			<div>
+				<h2>Score</h2>
+				<ul>
+					{playerIds.map((playerId) => (
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						<li key={playerId}>
+							{players[playerId].name}: {players[playerId].score}
+						</li>
+					))}
+				</ul>
+			</div>
 			<ul>
 				{history.map((_, move) => (
 					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -42,7 +74,11 @@ function Game() {
 					</li>
 				))}
 			</ul>
-			<Board squares={currentSquares} xIsNext={xIsNext} onPlay={handlePlay} />
+			<Board
+				squares={currentSquares}
+				currentPlayer={currentPlayer}
+				onPlay={handlePlay}
+			/>
 		</div>
 	);
 }
