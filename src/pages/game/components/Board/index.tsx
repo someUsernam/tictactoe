@@ -1,7 +1,6 @@
 import { useSize } from "@/resources/options";
 import { Player, PlayerSymbol } from "@/resources/players";
 import styled from "styled-components";
-import { checkWinner } from "../../utils/checkWinner";
 import { SYMBOL_MAP } from "../../utils/symbolMap";
 import { Square } from "./components/Square";
 
@@ -19,13 +18,22 @@ type BoardProps = {
 	onPlay: (newSquares: (PlayerSymbol | null)[]) => void;
 	currentPlayer: Player;
 	winningLine: number[];
+	showWinningLine: boolean;
+	currentWinner: string;
 };
 
-function Board({ squares, onPlay, currentPlayer, winningLine }: BoardProps) {
+function Board({
+	squares,
+	onPlay,
+	currentPlayer,
+	winningLine,
+	showWinningLine,
+	currentWinner,
+}: BoardProps) {
 	const size = useSize();
 
 	function handleMove(i: number) {
-		if (squares[i] || checkWinner(squares, size)) return;
+		if (squares[i] || currentWinner) return;
 
 		const newSquares = [...squares];
 		newSquares[i] = currentPlayer.symbol;
@@ -39,7 +47,7 @@ function Board({ squares, onPlay, currentPlayer, winningLine }: BoardProps) {
 				<StyledRow key={i}>
 					{Array.from({ length: size }, (_, j) => {
 						const index = i * size + j;
-						const isWinning = winningLine.includes(index);
+						const isWinning = showWinningLine && winningLine.includes(index);
 						return (
 							<Square
 								onPlayerMove={() => handleMove(i * size + j)}
