@@ -21,9 +21,6 @@ const Symbols = styled.div`
   height: 100%;
 `;
 
-const SECOND = 1000;
-const MILISECOND = 100;
-
 function SymbolsContainer() {
 	const { symbolsRef } = useTicTacToeEffect<HTMLDivElement>();
 
