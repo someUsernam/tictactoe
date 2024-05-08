@@ -1,6 +1,8 @@
 import { useSize } from "@/resources/options";
 import styled from "styled-components";
+import { checkWinner } from "../../utils/checkWinner";
 import { Square } from "./components/Square";
+import { Player } from "@/types";
 
 const StyledBoard = styled.div`
   display: flex;
@@ -12,19 +14,19 @@ const StyledRow = styled.div`
 `;
 
 type BoardProps = {
-	xIsNext: boolean;
 	squares: (string | null)[];
 	onPlay: (newSquares: (string | null)[]) => void;
+	currentPlayer: Player;
 };
 
-function Board({ xIsNext, squares, onPlay }: BoardProps) {
+function Board({ squares, onPlay, currentPlayer }: BoardProps) {
 	const size = useSize();
 
 	function handleMove(i: number) {
-		if (squares[i]) return;
+		if (squares[i] || checkWinner(squares, size)) return;
 
 		const newSquares = [...squares];
-		newSquares[i] = xIsNext ? "X" : "O";
+		newSquares[i] = currentPlayer.symbol === "Cross" ? "X" : "O";
 		onPlay(newSquares);
 	}
 

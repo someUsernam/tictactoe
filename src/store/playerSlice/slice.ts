@@ -1,4 +1,4 @@
-import { Player, PlayerSymbol } from "@/resources/players";
+import { Player } from "@/resources/players";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type PlayerState = {
@@ -9,20 +9,25 @@ const initialState: PlayerState = {
 	players: {},
 };
 
-type PlayerPayload = {
+type SetPlayerPayload = {
 	playerId: string;
 	player: Player;
+};
+
+type SetScorePayload = {
+	playerId: string;
+	score: number;
 };
 
 const playerSlice = createSlice({
 	name: "player",
 	initialState,
 	reducers: {
-		setPlayer(state, action: PayloadAction<PlayerPayload>) {
+		setPlayer(state, action: PayloadAction<SetPlayerPayload>) {
 			const { playerId, player } = action.payload;
 			state.players[playerId] = player;
 		},
-		setScore(state, action: PayloadAction<{ playerId: string; score: number }>) {
+		setScore(state, action: PayloadAction<SetScorePayload>) {
 			const { playerId, score } = action.payload;
 			state.players[playerId].score = score;
 		},
