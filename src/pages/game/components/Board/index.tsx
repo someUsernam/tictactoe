@@ -18,9 +18,10 @@ type BoardProps = {
 	squares: (PlayerSymbol | null)[];
 	onPlay: (newSquares: (PlayerSymbol | null)[]) => void;
 	currentPlayer: Player;
+	winningLine: number[];
 };
 
-function Board({ squares, onPlay, currentPlayer }: BoardProps) {
+function Board({ squares, onPlay, currentPlayer, winningLine }: BoardProps) {
 	const size = useSize();
 
 	function handleMove(i: number) {
@@ -36,12 +37,21 @@ function Board({ squares, onPlay, currentPlayer }: BoardProps) {
 			{Array.from({ length: size }, (_, i) => (
 				// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 				<StyledRow key={i}>
-					{Array.from({ length: size }, (_, j) => (
-						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-						<Square onPlayerMove={() => handleMove(i * size + j)} key={j}>
-							{SYMBOL_MAP.get(squares[i * size + j])}
-						</Square>
-					))}
+					{Array.from({ length: size }, (_, j) => {
+						const index = i * size + j;
+						const isWinning = winningLine.includes(index);
+
+						return (
+							<Square
+								onPlayerMove={() => handleMove(i * size + j)}
+								highlight={isWinning}
+								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+								key={j}
+							>
+								{SYMBOL_MAP.get(squares[i * size + j])}
+							</Square>
+						);
+					})}
 				</StyledRow>
 			))}
 		</StyledBoard>

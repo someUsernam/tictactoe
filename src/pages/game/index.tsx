@@ -14,6 +14,7 @@ function Game() {
 	const currentSquares: (PlayerSymbol | null)[] = history[currentMove];
 	const playerIds = Object.keys(players);
 	const currentPlayer = players[playerIds[currentMove % playerIds.length]];
+	const [winningLine, setWinningLine] = useState<number[]>([]);
 	const dispatch = useDispatch();
 
 	function handleCurrentMove(move: number) {
@@ -26,10 +27,11 @@ function Game() {
 		setCurrentMove(nextHistory.length - 1);
 
 		const winner = checkWinner(newSquares, size);
-		if (winner) {
+		if (winner?.symbol) {
+			setWinningLine(winner.winningLine);
 			let winnerPlayerId = "";
 			for (const [Id, value] of Object.entries(players)) {
-				if (value.symbol === winner) {
+				if (value.symbol === winner?.symbol) {
 					winnerPlayerId = Id;
 					break;
 				}
@@ -51,6 +53,7 @@ function Game() {
 	function handleReset() {
 		setHistory([Array(size).fill(null)]);
 		setCurrentMove(0);
+		setWinningLine([]);
 	}
 
 	return (
@@ -84,6 +87,7 @@ function Game() {
 				squares={currentSquares}
 				currentPlayer={currentPlayer}
 				onPlay={handlePlay}
+				winningLine={winningLine}
 			/>
 		</div>
 	);

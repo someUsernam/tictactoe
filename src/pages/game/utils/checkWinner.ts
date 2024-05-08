@@ -22,10 +22,10 @@ export function checkWinner(squares: (PlayerSymbol | null)[], size: number) {
 	for (const line of lines) {
 		const symbols = line.map((i) => squares[i]);
 		if (symbols.every((s) => s === PlayerSymbol.Cross)) {
-			return PlayerSymbol.Cross;
+			return { symbol: PlayerSymbol.Cross, winningLine: line };
 		}
 		if (symbols.every((s) => s === PlayerSymbol.Circle)) {
-			return PlayerSymbol.Circle;
+			return { symbol: PlayerSymbol.Circle, winningLine: line };
 		}
 	}
 	return null;
