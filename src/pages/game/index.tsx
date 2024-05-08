@@ -1,5 +1,5 @@
 import { useSize } from "@/resources/options";
-import { usePlayers } from "@/resources/players";
+import { PlayerSymbol, usePlayers } from "@/resources/players";
 import { setScore } from "@/store/playerSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -10,9 +10,8 @@ function Game() {
 	const size = useSize();
 	const players = usePlayers();
 	const [history, setHistory] = useState([Array(size).fill(null)]);
-	const [xIsNext, setXIsNext] = useState(true);
 	const [currentMove, setCurrentMove] = useState(0);
-	const currentSquares: (string | null)[] = history[currentMove];
+	const currentSquares: (PlayerSymbol | null)[] = history[currentMove];
 	const playerIds = Object.keys(players);
 	const currentPlayer = players[playerIds[currentMove % playerIds.length]];
 	const dispatch = useDispatch();
@@ -21,9 +20,8 @@ function Game() {
 		setCurrentMove(move);
 	}
 
-	function handlePlay(newSquares: (string | null)[]) {
+	function handlePlay(newSquares: (PlayerSymbol | null)[]) {
 		const nextHistory = [...history.slice(0, currentMove + 1), newSquares];
-		setXIsNext(!xIsNext);
 		setHistory(nextHistory);
 		setCurrentMove(nextHistory.length - 1);
 
@@ -31,7 +29,7 @@ function Game() {
 		if (winner) {
 			let winnerPlayerId = "";
 			for (const [Id, value] of Object.entries(players)) {
-				if (String(value.symbol) === winner) {
+				if (value.symbol === winner) {
 					winnerPlayerId = Id;
 					break;
 				}

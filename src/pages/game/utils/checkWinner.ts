@@ -1,4 +1,6 @@
-export function checkWinner(squares: (string | null)[], size: number) {
+import { PlayerSymbol } from "@/resources/players";
+
+export function checkWinner(squares: (PlayerSymbol | null)[], size: number) {
 	const lines = [];
 	for (let i = 0; i < size; i++) {
 		const row = [];
@@ -19,11 +21,11 @@ export function checkWinner(squares: (string | null)[], size: number) {
 
 	for (const line of lines) {
 		const symbols = line.map((i) => squares[i]);
-		if (symbols.every((s) => s === "X")) {
-			return "Cross";
+		if (symbols.every((s) => s === PlayerSymbol.Cross)) {
+			return PlayerSymbol.Cross;
 		}
-		if (symbols.every((s) => s === "O")) {
-			return "Circle";
+		if (symbols.every((s) => s === PlayerSymbol.Circle)) {
+			return PlayerSymbol.Circle;
 		}
 	}
 	return null;
