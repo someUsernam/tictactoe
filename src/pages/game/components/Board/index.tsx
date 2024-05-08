@@ -1,8 +1,9 @@
 import { useSize } from "@/resources/options";
+import { Player, PlayerSymbol } from "@/resources/players";
 import styled from "styled-components";
 import { checkWinner } from "../../utils/checkWinner";
+import { SYMBOL_MAP } from "../../utils/symbolMap";
 import { Square } from "./components/Square";
-import { Player } from "@/types";
 
 const StyledBoard = styled.div`
   display: flex;
@@ -14,8 +15,8 @@ const StyledRow = styled.div`
 `;
 
 type BoardProps = {
-	squares: (string | null)[];
-	onPlay: (newSquares: (string | null)[]) => void;
+	squares: (PlayerSymbol | null)[];
+	onPlay: (newSquares: (PlayerSymbol | null)[]) => void;
 	currentPlayer: Player;
 };
 
@@ -26,7 +27,7 @@ function Board({ squares, onPlay, currentPlayer }: BoardProps) {
 		if (squares[i] || checkWinner(squares, size)) return;
 
 		const newSquares = [...squares];
-		newSquares[i] = currentPlayer.symbol === "Cross" ? "X" : "O";
+		newSquares[i] = currentPlayer.symbol;
 		onPlay(newSquares);
 	}
 
@@ -38,7 +39,7 @@ function Board({ squares, onPlay, currentPlayer }: BoardProps) {
 					{Array.from({ length: size }, (_, j) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						<Square onPlayerMove={() => handleMove(i * size + j)} key={j}>
-							{squares[i * size + j]}
+							{SYMBOL_MAP.get(squares[i * size + j])}
 						</Square>
 					))}
 				</StyledRow>
