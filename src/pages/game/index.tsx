@@ -50,6 +50,11 @@ function Game() {
 		}
 	}
 
+	function handleReset() {
+		setHistory([Array(size).fill(null)]);
+		setCurrentMove(0);
+	}
+
 	return (
 		<div>
 			<h1>currentPlayer {currentPlayer.name}</h1>
@@ -64,6 +69,9 @@ function Game() {
 					))}
 				</ul>
 			</div>
+			<button type="button" onClick={handleReset}>
+				reset
+			</button>
 			<ul>
 				{history.map((_, move) => (
 					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
