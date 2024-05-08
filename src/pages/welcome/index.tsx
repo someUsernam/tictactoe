@@ -1,6 +1,7 @@
 import { Button } from "@/common/components/Button";
 import styled from "styled-components";
 import SymbolsContainer from "./components/SymbolsContainer";
+import { links } from "@/common/consts/Links";
 
 const StyledWelcome = styled.div`
   display: flex;
@@ -28,7 +29,9 @@ function Welcome() {
 				Tic <TitleSpan>Tac</TitleSpan> Toe
 			</Title>
 			<SymbolsContainer />
-			<Button size="large">Enter game</Button>
+			<Button href={links.options} size="large">
+				Enter game
+			</Button>
 		</StyledWelcome>
 	);
 }
