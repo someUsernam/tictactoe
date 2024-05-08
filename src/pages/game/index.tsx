@@ -4,6 +4,7 @@ import { setScore } from "@/store/playerSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Board } from "./components/Board";
+import { checkDraw } from "./utils/checkDraw";
 import { checkWinner } from "./utils/checkWinner";
 
 function Game() {
@@ -15,10 +16,13 @@ function Game() {
 	const playerIds = Object.keys(players);
 	const currentPlayer = players[playerIds[currentMove % playerIds.length]];
 	const [winningLine, setWinningLine] = useState<number[]>([]);
+	const [showWinningLine, setShowWinningLine] = useState(false);
 	const dispatch = useDispatch();
+	const [currentWinner, setCurrentWinner] = useState("");
 
-	function handleCurrentMove(move: number) {
+	function handleMoveTo(move: number) {
 		setCurrentMove(move);
+		setShowWinningLine(history.length - 1 === move);
 	}
 
 	function handlePlay(newSquares: (PlayerSymbol | null)[]) {
@@ -41,6 +45,9 @@ function Game() {
 				return;
 			}
 
+			setCurrentWinner(`${players[winnerPlayerId].name} wins!`);
+			setShowWinningLine(true);
+
 			dispatch(
 				setScore({
 					playerId: winnerPlayerId,
@@ -48,16 +55,22 @@ function Game() {
 				}),
 			);
 		}
+
+		if (checkDraw(!!winner, newSquares)) {
+			setCurrentWinner("Draw");
+		}
 	}
 
 	function handleReset() {
 		setHistory([Array(size).fill(null)]);
 		setCurrentMove(0);
 		setWinningLine([]);
+		setCurrentWinner("");
 	}
 
 	return (
 		<div>
+			{currentWinner && <h1>{currentWinner}</h1>}
 			<h1>currentPlayer {currentPlayer.name}</h1>
 			<div>
 				<h2>Score</h2>
@@ -77,7 +90,7 @@ function Game() {
 				{history.map((_, move) => (
 					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 					<li key={move}>
-						<button type="button" onClick={() => handleCurrentMove(move)}>
+						<button type="button" onClick={() => handleMoveTo(move)}>
 							{move ? `Go to move #${move}` : "Go to game start"}
 						</button>
 					</li>
@@ -88,6 +101,8 @@ function Game() {
 				currentPlayer={currentPlayer}
 				onPlay={handlePlay}
 				winningLine={winningLine}
+				showWinningLine={showWinningLine}
+				currentWinner={currentWinner}
 			/>
 		</div>
 	);
