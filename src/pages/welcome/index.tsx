@@ -2,6 +2,7 @@ import { Button } from "@/common/components/Button";
 import styled from "styled-components";
 import SymbolsContainer from "./components/SymbolsContainer";
 import { links } from "@/common/consts/Links";
+import { TicTacToeTitle } from "@/common/components/Title";
 
 const StyledWelcome = styled.div`
   display: flex;
@@ -13,23 +14,12 @@ const StyledWelcome = styled.div`
   gap: 2rem;
 `;
 
-const Title = styled.h1`
-  font-size: calc(var(--font-size-large) * 3);
-  color: var(--primary);
-`;
-
-const TitleSpan = styled.span`
-  color: var(--secondary);
-`;
-
 function Welcome() {
 	return (
 		<StyledWelcome>
-			<Title>
-				Tic <TitleSpan>Tac</TitleSpan> Toe
-			</Title>
+			<TicTacToeTitle />
 			<SymbolsContainer />
-			<Button href={links.options} size="large">
+			<Button href={links.setup} size="large">
 				Enter game
 			</Button>
 		</StyledWelcome>

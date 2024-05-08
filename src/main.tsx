@@ -7,20 +7,20 @@ import { createBrowserRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import ErrorBoundary from "./common/components/ErrorBoundary";
 import Layout from "./common/components/Layout";
-import CreatePlayers from "./pages/create-players";
 import Game from "./pages/game";
-import GameOptions from "./pages/game-options";
 import ProtectedGameRoute from "./pages/game/components/ProtectedGameRoute";
-import Welcome from "./pages/welcome/index.tsx";
+import Welcome from "./pages/welcome";
 import store from "./store/store.ts";
+import GameSetup from "./pages/game-setup";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
     --primary: oklch(64.5% 0.215 16.44);
     --secondary: oklch(86.06% 0.173 91.94);
 		--accent: oklch(74.77% 0.207 322.16);
+		--elevated: oklch(100% 0 0);
+		--elevated-foreground: oklch(0% 0 0);
 		--neutral: oklch(96.7% 0.003 264.54);
-		--neutral-foreground: oklch(0% 0 0);
     --background: oklch(94.82% 0.028 342.26);
 		--info: oklch(95.63% 0.044 203.39);
 		--success: oklch(93.82% 0.122 124.32);
@@ -77,12 +77,8 @@ const router = createBrowserRouter([
 				element: <Welcome />,
 			},
 			{
-				path: "/create-players",
-				element: <CreatePlayers />,
-			},
-			{
-				path: "/game-options",
-				element: <GameOptions />,
+				path: "/game-setup",
+				element: <GameSetup />,
 			},
 			{
 				path: "/game",

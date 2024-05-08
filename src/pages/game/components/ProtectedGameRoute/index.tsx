@@ -9,12 +9,8 @@ function ProtectedGameRoute({ children }: ChildrenProps) {
 	const isGameStarted = useIsGameStarted();
 	const players = usePlayers();
 
-	if (!playersExists(players)) {
-		return <Navigate to={links.options} />;
-	}
-
 	if (!playersExists(players) && !isGameStarted) {
-		return <Navigate to={links.players} />;
+		return <Navigate to={links.setup} />;
 	}
 
 	return children;
