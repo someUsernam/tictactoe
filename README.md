@@ -38,33 +38,23 @@ npm run dev
 
 you should see running port in the CLI
 
-# React + TypeScript + Vite
+## Project structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- `src/`: Main directory for source code.
+  - [`App.tsx`](src/App.tsx): Main application component.
+  - [`main.tsx`](src/main.tsx): Entry point of the application.
+  - `pages/`: Contains different pages of the application.
+    - `game/`: Game page.
+    - `game-setup/`: Game setup page.
+    - `welcome/`: Welcome page.
+  - [`store/`](src/store/store.ts): Contains Redux store and slices for state management.
+  - `common/`: Contains common components and utilities.
+  - `types/`: Contains TypeScript type definitions.
+  - `resources/`: Contains resources related to the game, options, and players.
+    - `options/`: Contains resources related to game options, such as board size, game mode, etc.
+    - `players/`: Contains resources related to the players, such as player data, types, and hooks.
+- `public/`: Directory for public assets.
+- [`package.json`](package.json): Contains project dependencies and scripts.
+- [`tsconfig.json`](tsconfig.json): Specifies root files and compiler options.
+- [`vite.config.ts`](vite.config.ts): Configures Vite, the build tool.
+- [`README.md`](README.md): Provides an overview of the project.
