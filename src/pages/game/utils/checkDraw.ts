@@ -1,6 +1,9 @@
 import { SquareSymbol } from "../types";
 
 function checkWhetherAllSquaresAreFilled(squares: SquareSymbol[]): boolean {
+	if(squares.length === 0) {
+		return false;
+	}
 	return squares.every((square) => square !== null);
 }
 
