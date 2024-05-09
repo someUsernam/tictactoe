@@ -19,7 +19,7 @@ function createPlayer(
 	};
 }
 
-const player1 = createPlayer("1", "player1", PlayerSymbol.Cross, 0);
-const player2 = createPlayer("2", "player2", PlayerSymbol.Circle, 0);
+const player1 = createPlayer("1", "john", PlayerSymbol.Cross, 0);
+const player2 = createPlayer("2", "jane", PlayerSymbol.Circle, 0);
 
 export { player1, player2 };

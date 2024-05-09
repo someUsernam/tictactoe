@@ -8,10 +8,22 @@ export interface Winner {
 
 export type CheckWinnerResult = Winner | null;
 
+const MINIMUM_BOARD_SIZE = 3;
+
 export function checkWinner(
 	squares: SquareSymbol[],
 	size: number,
 ): CheckWinnerResult {
+	if (squares.length === 0) {
+		return null;
+	}
+	if (squares.length !== size ** 2) {
+		throw new Error("Invalid squares size");
+	}
+	if (size < MINIMUM_BOARD_SIZE) {
+		throw new Error("Invalid board size");
+	}
+
 	const lines = [];
 	for (let i = 0; i < size; i++) {
 		const row = [];
