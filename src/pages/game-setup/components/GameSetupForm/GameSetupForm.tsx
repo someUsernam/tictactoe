@@ -40,6 +40,7 @@ function GameSetupForm() {
 						placeholder={`Player ${i + 1}`}
 						minLength={1}
 						maxLength={20}
+						pattern="\S+.*"
 					/>
 				</Fragment>
 			))}
