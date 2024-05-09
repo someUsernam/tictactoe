@@ -58,3 +58,12 @@ you should see running port in the CLI
 - [`tsconfig.json`](tsconfig.json): Specifies root files and compiler options.
 - [`vite.config.ts`](vite.config.ts): Configures Vite, the build tool.
 - [`README.md`](README.md): Provides an overview of the project.
+
+## ScreenShots
+
+## Project Overview and Design Decisions
+
+In this section, you can provide a brief description of your project, its purpose, and functionality. You can also explain the design decisions you made during the development of the project and why you made them. This could include choices about architecture, libraries, coding practices, and more.
+
+### Stack
+
