@@ -21,6 +21,7 @@ const StyledForm = styled.form`
 	text-align: left;
 	flex-direction: column;
 	gap: 0.4rem;
+	color: var(--text);
 `;
 
 function GameSetupForm() {

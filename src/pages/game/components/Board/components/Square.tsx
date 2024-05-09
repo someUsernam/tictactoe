@@ -10,7 +10,7 @@ const StyledSquare = styled.div<{ $highlight: boolean }>`
   align-items: center;
   background-color: ${({ $highlight }) =>
 		$highlight ? "var(--secondary)" : "var(--primary)"};
-	color: var(--elevated);
+	color: var(--text-forground);
 	font-weight: 800;
 	font-size: var(--font-size-xlarge);
 	border: 1px dashed var(--elevated);

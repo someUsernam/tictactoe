@@ -8,10 +8,10 @@ import { createGlobalStyle } from "styled-components";
 import ErrorBoundary from "./common/components/ErrorBoundary";
 import Layout from "./common/components/Layout";
 import Game from "./pages/game";
+import GameSetup from "./pages/game-setup";
 import ProtectedGameRoute from "./pages/game/components/ProtectedGameRoute";
 import Welcome from "./pages/welcome";
 import store from "./store/store.ts";
-import GameSetup from "./pages/game-setup";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -26,6 +26,9 @@ export const GlobalStyle = createGlobalStyle`
 		--success: oklch(93.82% 0.122 124.32);
 		--warning: oklch(70.49% 0.187 47.6);
 		--error: oklch(62.8% 0.25 29.23);
+		--text: oklch(0% 0 0);
+		--text-foreground: oklch(100% 0 0);
+		color-scheme: light;
 
 		--padding-small: 0.5rem;
 		--padding-medium: 1rem;
@@ -41,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
 
 		line-height: 1.5;
 		font-weight: 400;
+		color: var(--text);
 
 		font-synthesis: none;
 		text-rendering: optimizeLegibility;
@@ -48,9 +52,42 @@ export const GlobalStyle = createGlobalStyle`
 		-moz-osx-font-smoothing: grayscale;
 
 		@media (prefers-color-scheme: dark) {
-
+			--elevated: oklch(26.85% 0.006 34.3);
+			--elevated-foreground: oklch(100% 0 0);
+			--text: oklch(100% 0 0);
+			--text-foreground: oklch(0% 0 0);
+			--neutral: oklch(55.34% 0.012 58.07);
+			--background: oklch(0.31 0.04 343.7);
+			color-scheme: dark;
 		}
   }
+
+[data-theme="light"]{
+	--primary: oklch(64.5% 0.215 16.44);
+	--secondary: oklch(86.06% 0.173 91.94);
+	--accent: oklch(74.77% 0.207 322.16);
+	--elevated: oklch(100% 0 0);
+	--elevated-foreground: oklch(0% 0 0);
+	--neutral: oklch(96.7% 0.003 264.54);
+	--background: oklch(94.82% 0.028 342.26);
+	--info: oklch(95.63% 0.044 203.39);
+	--success: oklch(93.82% 0.122 124.32);
+	--warning: oklch(70.49% 0.187 47.6);
+	--error: oklch(62.8% 0.25 29.23);
+	--text: oklch(0% 0 0);
+	--text-foreground: oklch(100% 0 0);
+	color-scheme: light;
+}
+
+[data-theme="dark"]{
+	--elevated: oklch(26.85% 0.006 34.3);
+	--elevated-foreground: oklch(100% 0 0);
+	--text: oklch(100% 0 0);
+	--text-foreground: oklch(0% 0 0);
+	--neutral: oklch(55.34% 0.012 58.07);
+	--background: oklch(0.31 0.04 343.7);
+	color-scheme: dark;
+}
 
 	html, body, #root {
 		height: 100svh;
@@ -61,10 +98,11 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: var(--background);
 		display: flex;
 		place-items: center;
   }
+
+
 `;
 
 const router = createBrowserRouter([

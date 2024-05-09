@@ -8,6 +8,7 @@ const StyledSubtitle = styled.h2`
   padding: 1rem;
   background-color: var(--info);
   border-radius: var(--radius);
+  color: black;
 `;
 
 const GameSetupContainer = styled.div`
