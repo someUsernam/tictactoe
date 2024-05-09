@@ -14,6 +14,9 @@ const Input = styled.input`
 	border-radius: var(--radius);
 	border: none;
 	background-color: var(--neutral);
+	&::placeholder {
+		color: color-mix(in oklch, var(--text), var(--neutral));
+	}
 `;
 
 const StyledForm = styled.form`
