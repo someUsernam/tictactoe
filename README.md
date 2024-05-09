@@ -1,3 +1,21 @@
+## Running the Project
+
+To run the project, you need to follow these steps:
+
+1. Install the dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+you should see running port in the CLI
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
