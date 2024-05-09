@@ -16,7 +16,7 @@ const StyledGamePlayersItem = styled.li`
 	flex-direction: column;
 	gap: 0.5rem;
 	background-color: var(--primary);
-	color: var(--elevated);
+	color: var(--text-foreground);
 	font-weight: 800;
 	font-size: var(--font-size-large);
 `;
@@ -42,7 +42,7 @@ const StyledGamePlayerScore = styled.div`
 	background-color: var(--elevated);
 	padding: 0.5rem;
 	border-radius: var(--radius);
-	color: var(--elevated-foreground);
+	color: var(--text);
 `;
 
 const StyledGamePlayerInfo = styled.div`

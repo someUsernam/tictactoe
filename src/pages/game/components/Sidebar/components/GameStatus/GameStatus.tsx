@@ -8,7 +8,7 @@ type GameStatusProps = {
 
 const StyledGameStatus = styled.div`
 	margin: 0;
-  color: var(--elevated);
+  color: var(--text-foreground);
   background-color: var(--primary);
   border-radius: var(--radius);
   width: 100%;
