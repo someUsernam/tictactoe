@@ -13,7 +13,7 @@ const Input = styled.input`
 	word-spacing: inherit;
 	border-radius: var(--radius);
 	border: none;
-	background-color: #f3f4f6;
+	background-color: var(--neutral);
 `;
 
 const StyledForm = styled.form`

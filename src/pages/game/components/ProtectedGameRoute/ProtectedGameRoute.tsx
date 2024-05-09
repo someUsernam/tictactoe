@@ -1,9 +1,9 @@
 import { links } from "@/common/consts/Links";
-import { playersExists } from "@/pages/gameContainer/utils/playersExists";
 import { useIsGameStarted } from "@/resources/options";
 import { usePlayers } from "@/resources/players";
 import { ChildrenProps } from "@/types";
 import { Navigate } from "react-router-dom";
+import { playersExists } from "./utils/playersExists";
 
 function ProtectedGameRoute({ children }: ChildrenProps) {
 	const isGameStarted = useIsGameStarted();
