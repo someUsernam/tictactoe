@@ -1,14 +1,24 @@
 import styled from "styled-components";
 
 const StyledSquare = styled.div<{ $highlight: boolean }>`
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
+	box-sizing: border-box;
+	border-collapse: collapse;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${({ $highlight }) =>
-		$highlight ? "lightgreen" : "transparent"};
+		$highlight ? "var(--secondary)" : "var(--primary)"};
+	color: var(--elevated);
+	font-weight: 800;
+	font-size: var(--font-size-xlarge);
+	border: 1px dashed var(--elevated);
+	transition: background-color 0.2s;
+
+	&:hover {
+		background-color: color-mix(in oklch, var(--primary), var(--elevated) 50%);
+	}
 `;
 
 type SquareProps = {

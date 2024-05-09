@@ -1,10 +1,19 @@
 import { useSize } from "@/resources/options";
 import { useOrderedPlayers, usePlayers } from "@/resources/players";
+import styled from "styled-components";
 import Board from "./components/Board";
+import Sidebar from "./components/Sidebar";
 import { useGameResult } from "./hooks/useGameResult";
 import { useMovesState } from "./hooks/useMovesState";
 import { SquareSymbol } from "./types";
 import { checkWinner } from "./utils/checkWinner";
+
+const StyledGameContainer = styled.div`
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+`;
 
 function Game() {
 	const size = useSize();
@@ -52,32 +61,14 @@ function Game() {
 	}
 
 	return (
-		<div>
-			{currentWinner && <h1>{currentWinner}</h1>}
-			<h1>currentPlayer {currentPlayer.name}</h1>
-			<div>
-				<h2>Score</h2>
-				<ul>
-					{orderedPlayers.map((player) => (
-						<li key={player.id}>
-							{players[player.id].name}: {players[player.id].score}
-						</li>
-					))}
-				</ul>
-			</div>
-			<button type="button" onClick={handleReset}>
-				reset
-			</button>
-			<ul>
-				{history.map((_, move) => (
-					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-					<li key={move}>
-						<button type="button" onClick={() => handleMoveTo(move)}>
-							{move ? `Go to move #${move}` : "Go to game start"}
-						</button>
-					</li>
-				))}
-			</ul>
+		<StyledGameContainer>
+			<Sidebar
+				handleMoveTo={handleMoveTo}
+				handleReset={handleReset}
+				history={history}
+				currentWinner={currentWinner}
+				currentPlayer={currentPlayer}
+			/>
 			<Board
 				squares={currentSquares}
 				currentPlayer={currentPlayer}
@@ -86,7 +77,7 @@ function Game() {
 				showWinningLine={showWinningLine}
 				currentWinner={currentWinner}
 			/>
-		</div>
+		</StyledGameContainer>
 	);
 }
 
