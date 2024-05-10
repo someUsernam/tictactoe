@@ -63,7 +63,25 @@ you should see running port in the CLI
 
 ## Project Overview and Design Decisions
 
-In this section, you can provide a brief description of your project, its purpose, and functionality. You can also explain the design decisions you made during the development of the project and why you made them. This could include choices about architecture, libraries, coding practices, and more.
+In this section,I will provide a brief description of a project, its purpose, and functionality. Also, explain the design decisions during the development of the project. This will include choices about architecture, libraries, coding practices, and more.
+
+### About
 
 ### Stack
+
+### Design Decisions
+
+### Architecture
+
+### Libraries
+
+### Coding Practices
+
+### Testing
+
+### Accessibility
+
+### Future Improvements
+
+### Conclusion
 
