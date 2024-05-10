@@ -61,6 +61,15 @@ you should see running port in the CLI
 
 ## ScreenShots
 
+### Home page
+![Screenshot from 2024-05-09 20-11-29](https://github.com/someUsernam/tictactoe/assets/101038373/2dbec09c-58ec-445a-96b1-d3184646dc75)
+### Game setup page
+![Screenshot from 2024-05-09 20-11-15](https://github.com/someUsernam/tictactoe/assets/101038373/a61f6d7d-19ae-44b3-8edb-6832c65b5237)
+### Game page 
+![Screenshot from 2024-05-09 20-10-28](https://github.com/someUsernam/tictactoe/assets/101038373/0db8c13d-c2d7-4026-bd1a-69b4aeebc57e)
+### Game page (dark mode)
+![Screenshot from 2024-05-09 20-10-59](https://github.com/someUsernam/tictactoe/assets/101038373/e9b10449-3ce2-45fd-bcb4-d8047925bdef)
+
 ## Project Overview and Design Decisions
 
 In this section,I will provide a brief description of a project, its purpose, and functionality. Also, explain the design decisions during the development of the project. This will include choices about architecture, libraries, coding practices, and more.
