@@ -9,66 +9,73 @@ describe("checkDraw", () => {
 	it("should return true if there is no winner and all squares are filled", () => {
 		//given
 		const isWinner = false;
-
-		//when
 		const squares = generateDrawSymbols();
 
+		//when
+		const result = checkDraw(isWinner, squares);
+
 		//then
-		expect(checkDraw(isWinner, squares)).toBe(true);
+		expect(result).toBe(true);
 	});
 
 	it("should return false if there is no winner and not all squares are filled", () => {
 		//given
 		const isWinner = false;
-
-		//when
 		const squares = generatePlayerSymbolsWithNull(4);
 
+		//when
+		const result = checkDraw(isWinner, squares);
+
 		//then
-		expect(checkDraw(isWinner, squares)).toBe(false);
+		expect(result).toBe(false);
 	});
 
 	it("should return false if there is winner and all squares are filled", () => {
 		//given
 		const isWinner = true;
-
-		//when
 		const squares = generatePlayerSymbols(4);
 
+		//when
+		const result = checkDraw(isWinner, squares);
+
 		//then
-		expect(checkDraw(isWinner, squares)).toBe(false);
+		expect(result).toBe(false);
 	});
 
 	it("should return false if there is winner and not all squares are filled", () => {
 		//given
 		const isWinner = true;
-
-		//when
 		const squares = generatePlayerSymbolsWithNull(4);
 
+		//when
+		const result = checkDraw(isWinner, squares);
+
 		//then
-		expect(checkDraw(isWinner, squares)).toBe(false);
+		expect(result).toBe(false);
 	});
 
 	it("should return false if there is no squares", () => {
 		//given
 		const isWinner = false;
-
-		//when
 		const squares: SquareSymbol[] = [];
 
+		//when
+		const result = checkDraw(isWinner, squares);
+
 		//then
-		expect(checkDraw(isWinner, squares)).toBe(false);
+		expect(result).toBe(false);
 	});
 
 	it("should not throw if there is 10 Mil squares ", () => {
 		//given
 		const isWinner = false;
-
-		//when
 		const squares = generatePlayerSymbols(10000000);
 
-		//then
-		expect(() => checkDraw(isWinner, squares)).not.toThrow();
+		expect(
+			() =>
+				//when
+				checkDraw(isWinner, squares),
+			//then
+		).not.toThrow();
 	});
 });
